@@ -1,4 +1,7 @@
+theme: architect
+
 new_line 
+
 
 remote_theme: architect
 
