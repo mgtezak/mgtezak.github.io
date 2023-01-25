@@ -31,7 +31,4 @@ embedded image:
 
 embedded vid:
 
-![cool vid!](https://www.youtube.com/watch?v=ubQBa7DnuMI&list=FLqFZDMHNG5qcJbFnSycYg3w&index=7 "acapella")
-
-
-[![Everything Is AWESOME](http://i.imgur.com/Ot5DWAW.png)](https://youtu.be/StTqXEQ2l-Y?t=35s "Everything Is AWESOME")
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ubQBa7DnuMI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
