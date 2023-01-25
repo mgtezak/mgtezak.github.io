@@ -1,3 +1,5 @@
+new_line 
+
 remote_theme: architect
 
 # My Static Webpage
