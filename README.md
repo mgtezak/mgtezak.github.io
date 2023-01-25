@@ -1,3 +1,5 @@
+remote_theme: architect
+
 # My Static Webpage
 
 ## header
