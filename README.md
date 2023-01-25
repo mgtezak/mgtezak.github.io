@@ -10,6 +10,7 @@
 
 ###### faded
 
+***
 
 embedded links:
 
@@ -18,6 +19,8 @@ embedded links:
 <a href="https://uploads2.wikiart.org/images/m-c-escher.jpg!Portrait.jpg">cool pic</a> 
 
 <a href="https://www.instagram.com/teezknees/">instagram</a>
+
+***
 
 spotify list:
 
