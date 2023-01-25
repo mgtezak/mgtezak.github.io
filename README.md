@@ -27,4 +27,8 @@ spotify list:
 
 embedded image:
 
-![The San Juan Mountains are beautiful!](https://uploads2.wikiart.org/images/m-c-escher.jpg!Portrait.jpg "San Juan Mountains")
+![where does this show up!](https://uploads2.wikiart.org/images/m-c-escher.jpg!Portrait.jpg "escher portrait")
+
+embedded vid:
+
+![cool vid!](https://www.youtube.com/watch?v=ubQBa7DnuMI&list=FLqFZDMHNG5qcJbFnSycYg3w&index=7 "acapella")
