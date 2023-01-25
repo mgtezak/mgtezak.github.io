@@ -26,5 +26,4 @@ spotify list:
 
 embedded image:
 
-![The San Juan Mountains are beautiful!](/assets/images/san-juan-mountains.jpg "San Juan Mountains")
 ![The San Juan Mountains are beautiful!](https://uploads2.wikiart.org/images/m-c-escher.jpg!Portrait.jpg "San Juan Mountains")
