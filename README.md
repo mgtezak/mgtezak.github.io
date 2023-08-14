@@ -4,7 +4,7 @@ Aspiring data scientist
 
 certificates:
 
-<a href="">cool vid</a> 
+<a href="certificates/classification_2_sklearn.pdf">cool vid</a> 
 
 <a href="https://uploads2.wikiart.org/images/m-c-escher.jpg!Portrait.jpg">cool pic</a> 
 
