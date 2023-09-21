@@ -1,6 +1,6 @@
-## My Portfolio Website
+## <a href="https://mgtezak.github.io/" target="_blank" rel="noopener noreferrer">My Portfolio Website</a>
 
-A <a href="https://mgtezak.github.io/" target="_blank" rel="noopener noreferrer">website</a> to present some of the projects I've been working on. 
+A website to present some of the projects I've been working on. 
 It was built using a template called "Massively" created by
 <a href="https://aj.lkn.io/" target="_blank" rel="noopener noreferrer">@ajlkn</a>
 available at
