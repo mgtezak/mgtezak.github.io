@@ -43,7 +43,7 @@
 
 						</ul>
 						<ul class="icons">
-							<li><a href="https://github.com/mgtezak" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+							<li><a href="https://github.com/mgtezak" target="_blank" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
 						</ul>
 					</nav>
 
@@ -60,21 +60,34 @@
 										Scikit-learn, Bokeh, Selenium, SHAP, Streamlit, Docker</p>
 									
 								</header>
-								<a href="#" class="image main"><img src="images/australia2.png" alt="" /></a>
+								<a href="https://australia-weather-prediction.onrender.com/" class="image main" target="_blank"><img src="images/australia2.png" alt="" /></a>
 								<p>Abschlussprojekt eines zwölfwöchigen Data Science Bootcamps bei 
 									<a href="https://datascientest.com/de/", target="_blank">DataScientest</a>.
-									Ziel war es, die Regenwahrscheinlichkeit an 49 Orten in Australien anhand von wenigen
+									Ziel war es, die Regenwahrscheinlichkeit an 49 Orten in Australien anhand von sehr begrenzten
 									Wetterdaten des vorherigen Tages zu bestimmen. 
 									Das Endprodukt ist eine interaktive Streamlit App mit "web scraping" Funktion.
 									Auf Knopfdruck zieht die App innerhalb weniger Sekunden Wetterdaten von heute 
 									aus dem Netz, verarbeitet diese und lässt sie, je nach Ort, 
 									durch eins von vielen vortrainierten ML-Modellen laufen. 
 									Das Modell prognostiziert dann das Wetter von morgen und liefert sogar einige Informationen dazu,
-									wie die verschiedenen Faktoren (Temperatur, Luftfeutigkeit etc.) die gegebene Prognose beeinflusst haben.
-									<a href="https://australia-weather-prediction.onrender.com/", target="_blank"></a> 
-									Etwas Geduld beim Laden bitte. Länger als 1 min sollte es jedoch nicht dauern. 
+									inwiefern die einzelnen Faktoren (Temperatur, Luftfeuchtigkeit etc.) die gegebene Prognose beeinflusst haben.
 								</p>
+								<p>
+									<a href="https://australia-weather-prediction.onrender.com/", target="_blank"></a> 
+									Die App ist auf der Plattform render.com öffentlich zugänglich gemacht. 
+									Da ich die kostenfreie Option gewählt habe, braucht die App beim erstmaligen Laden leider circa 30 Sekunden um den Dockercontainer neu hochzufahren. 
+									Danach funktioniert sie jedoch reibungsfrei und mit wenig Latenz.
+									Das zugehörige Code Repository ist auf GitHub und das Docker Image auf DockerHub ersichtlich.
+
+								</p>
+								<ul class="actions special">
+									<li><a href="https://australia-weather-prediction.onrender.com/"  target="_blank" class="button primary">Zur Streamlit App</a></li>
+									<li><a href="https://github.com/mgtezak/australian_weather_prediction"  target="_blank" class="button">Zum Github Repo</a></li>
+									<li><a href="https://hub.docker.com/r/mgtezak/australia_original"  target="_blank" class="button">Zum Docker Image</a></li>
+								</ul>
 							</article>
+
+
 
 						<!-- Footer -->
 							<footer>
