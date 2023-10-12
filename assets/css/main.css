@@ -4687,3 +4687,9 @@ input, select, textarea {
 		}
 
 	}
+
+.language-toggle{
+	font-size: 0.7em; 
+	font-style: italic; 
+	float: right
+}
