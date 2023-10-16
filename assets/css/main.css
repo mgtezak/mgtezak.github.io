@@ -3456,9 +3456,9 @@ input, select, textarea {
 				min-height: 90vh;
 			}
 
-				#intro p br {
+				/* #intro p br {
 					display: none;
-				}
+				} */
 
 				#intro + #header {
 					margin-top: -14rem;
