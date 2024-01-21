@@ -38,24 +38,48 @@
 					<div id="main">
 
 						<!-- Post -->
-							<section class="post">
-								<header class="major">
-									<!-- <span class="date">1. November 2023</span> -->
-									<h1>Raucherstatus Prädiktion<br />
-									</h1>
-									<p>
-										Data Science Projekt: Den derzeitigen Raucherstatus vorhersagen mithilfe diverser Biomarker.
-										<br />
-										LightGBM, XGBoost, Scikit-Learn, Matplotlib, Seaborn		
-									</p>
-								</header>
-								<div class="image main"><img src="images/pic01.jpg" alt="image: smokers-prediction" /></div>
-                                <p>description</p>
-								<ul class="actions special">
-									<li><a href="https://mgtezak-data-science.streamlit.app/Smoker_Status_Prediction"  target="_blank" class="button primary">Zum ganzen Projekt</a></li>
-								</ul>
-                            </section>
+						<section class="post">
+							<header class="major">
+								<!-- <span class="date">1. November 2023</span> -->
+								<h1>
+									Raucherstatus Prädiktion
+								</h1>
+								<p>
+									Data Science Projekt: Anhand diverser Biomarker den derzeitigen Raucherstatus von Patienten vorhersagen.
+									<br />
+									LightGBM, XGBoost, Scikit-Learn, Matplotlib, Seaborn		
+								</p>
+							</header>
+							<div class="image main"><img src="../../images/smokers-status.png" alt="image: smokers-prediction" /></div>
+							<p>
+								Dieses Projekt entstand im Rahmen einer "<a href="https://www.kaggle.com/competitions/playground-series-s3e24/"  target="_blank">Kaggle Competion</a>".
+								Ziel war es, anhand von 22 verschiedenen Biomarkern die Wahrscheinlichkeit zu bestimmen, dass ein Patient Raucher ist.
+								Die Bewertungsmetrik, welche es zu maximieren galt, war die Fläche unter der ROC-Kurve.
+							</p>
+							<p>
+								Zunächst führe ich eine ziemlich umfassende Datenanalyse mit viele Visualisierungen durch. 
+								Dann trainiere ich 8 verschiedene Lernalgorithmen (von logistischer Regression bis hin zu einem 
+								<i>light gradient boosting</i> Klassifizierer) und vergleiche die Ergebnisse. 
+								Schließlich kombiniere ich die besten Modelle mittels Ensemble-Methoden wie <i>Voting</i> und <i>Stacking</i> um sie weiter zu schärfen.
+							</p>
+							<p>
+								Entgegen jeglicher Erwartung stelle ich fest, dass der beste Prädiktor für den Raucherstatus eines Individuums seine Körpergröße ist.
+								Natürlich gibt es keinen Grund anzunehmen, dass eine hohe Körpergröße selbst zum Rauchen verleitet. 
+								Vielmehr scheint Körpergröße als Proxy für das Geschlecht des Individuums zu fungieren:
+								Männer rauchen häufiger als Frauen, daher rauchen größere Menschen häufiger als kleinere.
 
+							</p>
+							<ul class="actions special">
+								<li><a href="https://mgtezak-data-science.streamlit.app/Smoker_Status_Prediction"  target="_blank" class="button primary">Zum Projekt</a></li>
+							</ul>
+						</section>
+
+						<footer>
+							<div class="pagination">
+								<a href="mohssche-härte.html" class="previous">Prev</a>
+								<a href="tableau.html" class="next">Next</a>
+							</div>
+						</footer>
 					</div>
 
 				<!-- Footer -->

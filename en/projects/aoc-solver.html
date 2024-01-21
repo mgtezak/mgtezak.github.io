@@ -41,15 +41,50 @@
 							<section class="post">
 								<header class="major">
 									<!-- <span class="date">1. November 2023</span> -->
-									<h1>Title<br />
-									2nd line</h1>
-									<p>subtitle</p>
+									<h1>Advent of Code Puzzle Solver</h1>
+									<p>
+										Multifaceted & interactive 
+										<a href="https://aoc-puzzle-solver.streamlit.app/", target="_blank">web app</a>
+										devoted to Advent of Code solutions, data analytics & more. 
+										<br />
+										Streamlit, Pandas, Numpy, Scipy, Sympy, NetworkX, Matplotlib, Seaborn
+									</p>
 								</header>
-								<div class="image main"><img src="images/pic01.jpg" alt="image: aoc-solver" /></div>
-                                <p>description</p>
+								<div class="image main"><img src="../../images/aoc-screenshot.png" alt="image: aoc-solver" /></div>
+                                <p>
+									If you're not familiar with <a href="https://adventofcode.com/" target="_blank">Advent of Code</a>, here's a quick description from their website:
+								</p>
+								<blockquote>
+									Advent of Code is an annual Advent calendar of small programming puzzles for a variety of skill sets and skill levels that can be solved in any programming language you like.
+								</blockquote>
+								<p>
+									I'm a huge fan of these puzzles and the incredibly supportive community of people that grew around it. 
+									This app is my way of giving back to this community. 
+									It has many interactive features. 
+									For example it lets anyone enter their individual Advent of Code puzzle input for a given day and year, 
+									runs it through the corresponding solving function (more than 300 solving functions available so far).
+									The app then displays the solution. I implemented some basic caching, such that the puzzle input, the solution for each puzzle part as well as the solution runtimes are put into a temporary storage file system – json and csv files which are connected to the individual users session ID.
+									This way the user won't need to re-enter the input for both parts or wait for the solution function to re-run, if they want to look up their answer again – most solution functions execute in under 1 second anyway, but some can take more than 20 seconds.
+								</p>
+								<span class="image right"><img src="../../images/aoc_public_completions2.png" alt="" /></span>
 
+								<p>
+									I recently added an entire data analytics part with lots of nice christmas-themed visualizations. They provide insight into both my personal progress on the platform as well as community statistics, leaderboard rankings and overall puzzle completion rates.
+									All in all, this has been the biggest, most multifaceted and gratifying of my projects so far. 
+									I'm glad to say that, in little more than a month after its launch, it has received more than 2500 unique visitors, some of whom have become regular guests. 
+									I've also received a lot of positive feedback by the Advent of Code community.
+
+								</p>
+								<ul class="actions special">
+									<li><a href="https://aoc-puzzle-solver.streamlit.app/"  target="_blank" class="button primary">Visit Website</a></li>
+								</ul>
                             </section>
-
+							<footer>
+								<div class="pagination">
+									<!-- <a href="mohs-hardness.html" class="previous">Prev</a> -->
+									<a href="mohs-hardness.html" class="next">Next</a>
+								</div>
+							</footer>
 					</div>
 
 				<!-- Footer -->
