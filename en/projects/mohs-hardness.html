@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Michael Tezak Portfolio</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<link rel="icon" type="image/svg+xml" href="../../assets/icons/favicon.svg" />
+		<noscript><link rel="stylesheet" href="../../assets/css/noscript.css" /></noscript>
+	</head>
+
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header"></header>
+
+				<!-- Nav -->
+                <nav id="nav">
+					<ul class="links">
+						<li class="active"><a href="../projects.html">Projects</a></li>
+						<li><a href="../technical-skills.html">Technical-Skills</a></li>
+						<li><a href="../other-interests.html">Other-Interests</a></li>
+				</ul>
+                    <ul class="icons">
+                        <li><a href="https://github.com/mgtezak" target="_blank" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+                    </ul>
+                </nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+						<section class="post">
+							<header class="major">
+								<!-- <span class="date">1. November 2023</span> -->
+								<h1>Mohs Hardness Regression<br />
+								</h1>
+								<p>
+									Data science project predicting Mohs hardness of a mineral, given its properties.
+									<br />
+									TensorFlow, LightGBM, XGBoost, Scikit-Learn, Matplotlib, Seaborn	
+								</p>
+							</header>
+							<div class="image main"><img src="../../images/mohs-hardness.png" alt="image: mohs-hardness" /></div>
+							<!-- <span class="image left"><img src="../../images/mohs-hardness.png" alt="" /></span> -->
+
+							<p>
+								This project was done in the context of a <a href="https://www.kaggle.com/competitions/playground-series-s3e25/"  target="_blank">Kaggle competion</a>.
+								The objective was to train a machine learning model to predict the hardness of a mineral on the basis of 11 different molecular properties.
+								The metric used in order to score the participants was the Median Absolute Error.
+								I performed an exploratory data analysis with some visualizations and then proceeded to train and evaluate various models: 
+								both shallow algorithms and deep neural networks in combination with ensemble methods such as voting and stacking. 
+								Perhaps unsurprisingly, the best models by far were stacked deep neural nets, i. e. neural nets which were trained using the original data plus the predictions of a another ML model.
+							</p>
+
+							<ul class="actions special">
+								<li><a href="https://mgtezak-data-science.streamlit.app/Mohs_Hardness_Regression" target="_blank" class="button primary">Full Project</a></li>
+							</ul>
+
+						</section>
+
+					</div>
+
+				<!-- Footer -->
+                <footer id="footer">
+                    <section class="split contact">
+                        <section>
+                            <h3>Contact</h3>
+                            <p><a>mgtezak@gmail.com</a></p>
+							<p><span class="language-toggle"><a href="../../de/projekte/mohssche-härte.html">Deutsche Version</a></span></p>
+                        </section>
+                    </section>
+                </footer>
+
+				<!-- Copyright -->
+					<div id="copyright"></div>
+
+			</div>
+
+		<!-- Scripts -->
+		<script src="../../assets/js/jquery.min.js"></script>
+		<script src="../../assets/js/jquery.scrollex.min.js"></script>
+		<script src="../../assets/js/jquery.scrolly.min.js"></script>
+		<script src="../../assets/js/browser.min.js"></script>
+		<script src="../../assets/js/breakpoints.min.js"></script>
+		<script src="../../assets/js/util.js"></script>
+		<script src="../../assets/js/main.js"></script>
+
+
+	</body>
+</html>
