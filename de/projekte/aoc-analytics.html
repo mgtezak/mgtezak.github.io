@@ -42,36 +42,29 @@
 							<section class="post">
 								<header class="major">
 									<!-- <span class="date">1. November 2023</span> -->
-									<h1>Advent of Code
-									Puzzle Solver</h1>
+									<h1>Advent of Code Datenanaylse</h1>
 									<p>
-										Multifunktionale & interaktive <a href="https://aoc-puzzle-solver.streamlit.app/", target="_blank">Web App</a>  
-										für Advent of Code Puzzle Lösungen & mehr. <br/>
-										Streamlit, Json, Pandas, Numpy, Scipy, Sympy, NetworkX
+                                        Web Scraping, Analyse und Visualisierung öffentlicher Benutzerdaten von Advent of Code. <br/>
+										Streamlit, Requests, BeautifulSoup, Matplotlib, Seaborn
 									</p>
 								</header>
-								<div class="image main"><img src="../../images/aoc-screenshot.png" alt="image: aoc-solver" /></div>
-                                <p>
-									Falls du nicht mit <a href="https://adventofcode.com/" target="_blank">Advent of Code</a> vertraut bist, hier eine kurze Beschreibung von der Website:
-								</p>
-								<blockquote>
-									Advent of Code is an annual Advent calendar of small programming puzzles for a variety of skill sets and skill levels that can be solved in any programming language you like.
-								</blockquote>
+								<div class="image main"><img src="../../images/aoc-submission-times.png" alt="image: aoc-submission-times" /></div>
+                              
 								<p>
-									Ich bin ein großer Fan dieser Puzzles und der unglaublich unterstützenden Gemeinschaft von Menschen, 
-									die sich darum gebildet hat. Die App ist meine Art, dieser Gemeinschaft etwas zurückzugeben. 
-									Sie verfügt über viele interaktive Funktionen. Zum Beispiel kann jeder
-									seinen individuellen Puzzle-Input für einen bestimmten Tag und ein bestimmtes Jahr eingeben, 
-									der dann an die entsprechende Lösungsfunktion weitergereicht wird (bisher sind mehr als 300 Lösungsfunktionen verfügbar). 
-									Daraufhin zeigt die App dann die Lösung an. Ich habe hierbei einen Caching-Mechanismus implementiert, 
-									sodass der Puzzle-Input, die Lösung für jeden Puzzleteil sowie die Laufzeiten der Lösungsfunktionen in einem 
-									temporären Dateisystem gespeichert werden. Es handelt sich hierbei um JSON- und CSV-Dateien, die mit der individuellen Session-ID des Benutzers verknüpft sind. 
-									Auf diese Weise muss der Benutzer seinen Puzzle-Input für den zweiten Teil nicht erneut eingeben oder darauf warten, 
-									dass eine bereits gelaufene Lösungsfunktion erneut ausgeführt wird, falls er seine Antwort noch einmal nachschlagen möchte.
-									Die meisten Lösungsfunktionen werden zwar ohnehin in unter einer Sekunde ausgeführt, aber einige können mehr als 20 Sekunden dauern.								
-									Insgesamt war diese App bisher das größte und vielseitigste meiner Projekte. 
-									In etwas mehr als einem Monat nach ihrem Start hat sie mehr als 2500 individuelle Besucher angezogen, 
-									von denen einige zu regelmäßigen Gästen geworden sind. Ich habe auch viel positives Feedback von der Advent of Code Community erhalten.
+                                    Nachdem ich meine 
+                                    <a href="aoc-solver.html">Advent of Code Puzzle Solver App</a> entwickelt hatte, dachte ich, dass es schön wäre, 
+                                    einen Bereich für Datenanalytik mit vielen weihnachtlich gestalteten Visualisierungen hinzuzufügen. 
+                                    Zuerst fügte ich einige Visualisierungen meiner persönlichen Statistiken hinzu, 
+                                    dann wollte ich einige globale Community-Statistiken, Ranglisten und allgemeine Partizipationsquoten visualisieren. 
+                                    Da es keine öffentliche API gab, von der aus ich diese Daten abrufen konnte, beschloss ich, 
+                                    sie direkt von der Website mit Hilfe von Pythons <i>Requests</i> und <i>BeautifulSoup</i> Bibliotheken zu scrapen. 
+                                    Dabei lernte ich viel über empfohlene Vorgehensweisen bei ethischem Web Scraping. 
+                                    Zum Beispiel sollte man seine Kontaktdaten im User-Header seiner Requests mitsenden und 
+                                    die Frequenz von Requests zeitlich drosseln um den Server nicht zu überlasten.  
+                                    Nachdem ich die Daten hauptsächlich mit Matplotlib und etwas Seaborn visualisiert hatte, 
+                                    präsentierte ich meine Ergebnisse in einem öffentlichen
+                                    <a href="https://www.reddit.com/r/adventofcode/comments/1aeoazh/aoc_public_stats_visualizations_20152023/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button" target="_blank">Reddit-Post</a>. 
+                                    Es war erfreulich zu sehen, wie viele Leute in der Community Interesse zeigten und mir konstruktives Feedback gaben.
 								</p>
 								<ul class="actions special">
 									<li><a href="https://aoc-puzzle-solver.streamlit.app/"  target="_blank" class="button primary">Zur Website</a></li>
@@ -80,8 +73,8 @@
 
                         <footer>
                             <div class="pagination">
-                                <a href="raucher-prädiktion.html" class="previous">Prev</a>
-                                <a href="tableau.html" class="next">Next</a>
+                                <a href="pomodino.html" class="previous">Prev</a>
+                                <a href="mohssche-härte.html" class="next">Next</a>
                             </div>
                         </footer>
 
@@ -93,7 +86,7 @@
                         <section>
                             <h3>Kontakt</h3>
                             <p><a>mgtezak@gmail.com</a></p>
-							<p><span class="language-toggle"><a href="../../en/projects/aoc-solver.html">English version</a></span></p>
+							<p><span class="language-toggle"><a href="../../en/projects/aoc-analytics.html">English version</a></span></p>
                         </section>
                     </section>
                 </footer>

@@ -42,38 +42,32 @@
 							<section class="post">
 								<header class="major">
 									<!-- <span class="date">1. November 2023</span> -->
-									<h1>Advent of Code Puzzle Solver</h1>
+									<h1>Advent of Code Data Analytics</h1>
 									<p>
-										Multifaceted & interactive 
-										<a href="https://aoc-puzzle-solver.streamlit.app/", target="_blank">web app</a>
-										devoted to Advent of Code solutions & more. 
-										<br />
-										Streamlit, Json, Pandas, Numpy, Scipy, Sympy, NetworkX
+                                        Web scraping, analysis and visualization of Advent of Code's public user data.
+                                        <br/>
+										Streamlit, Requests, BeautifulSoup, Matplotlib, Seaborn
 									</p>
 								</header>
-								<div class="image main"><a href="https://aoc-puzzle-solver.streamlit.app/" target="_blank"><img src="../../images/aoc-screenshot.png" alt="image: aoc-solver" /></a></div>
-                                <p>
-									If you're not familiar with <a href="https://adventofcode.com/" target="_blank">Advent of Code</a>, here's a quick description from their website:
-								</p>
-								<blockquote>
-									Advent of Code is an annual Advent calendar of small programming puzzles for a variety of skill sets and skill levels that can be solved in any programming language you like.
-								</blockquote>
+								<div class="image main"><a href="https://aoc-puzzle-solver.streamlit.app/" target="_blank"><img src="../../images/aoc-submission-times.png" alt="image: aoc-solver" /></a></div>
+
+								<!-- <span class="image right"><img src="../../images/aoc_public_completions2.png" alt="" /></span> -->
+
 								<p>
-									I'm a huge fan of these puzzles and the incredibly supportive community of people that grew around it. 
-									This app is my way of giving back to this community. 
-									It has many interactive features. 
-									For example it lets anyone enter their individual Advent of Code puzzle input for a given day and year, 
-									runs it through the corresponding solving function (more than 300 solving functions available so far).
-									The app then displays the solution. 
-									I implemented some basic caching, such that the puzzle input, 
-									the solution for each puzzle part as well as the solution runtimes are put into a temporary storage file system – 
-									JSON and CSV files which are connected to the individual users session ID.
-									This way the user won't need to re-enter the input for both parts or wait for the solution function to re-run, 
-									if they want to look up their answer again – most solution functions execute in under 1 second anyway, but some can take more than 20 seconds.
-									
-									All in all, this has been the biggest, most multifaceted and gratifying of my projects so far. 
+                                    After having built my <a href="aoc-solver.html">Advent of Code Puzzle Solver</a> app, 
+                                    I figured, that it would be nice to add a data analytics part with lots of Christmas-themed visualizations to the website.
+                                    First I added some visualizations of my personal stats, then I wanted to visualize some global community stats, leaderboard rankings and overall puzzle completion rates.
+                                    Since there wasn't any public API from which to pull these data, 
+                                    I decided to scrape them directly from the website using Python's <i>Requests</i> and <i>BeautifulSoup</i> libraries.
+                                    In the process I learned a lot about best practices in ethical web scraping.
+                                    For example, one should put their contact info in the user-header of each request and throttle the speed at which requests are sent so as not to overwhelm the server.
+                                    After visualizing the data using mostly Matplotlib and some Seaborn I presented my results in a public
+                                    <a href="https://www.reddit.com/r/adventofcode/comments/1aeoazh/aoc_public_stats_visualizations_20152023/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button" target="_blank">reddit post</a>.
+                                    It was gratifying to see how many people in the community took an interest and gave me constructive feedback.
+
+                                    <!-- All in all, this has been the biggest, most multifaceted and gratifying of my projects so far. 
 									I'm glad to say that, in little more than a month after its launch, it has received more than 2500 unique visitors, some of whom have become regular guests. 
-									I've also received a lot of positive feedback by the Advent of Code community.
+									I've also received a lot of positive feedback by the Advent of Code community. -->
 
 								</p>
 								<ul class="actions special">
@@ -82,8 +76,8 @@
                             </section>
 							<footer>
 								<div class="pagination">
-									<a href="smokers-prediction.html" class="previous">Prev</a>
-									<a href="tableau.html" class="next">Next</a>
+									<a href="pomodino.html" class="previous">Prev</a>
+									<a href="mohs-hardness.html" class="next">Next</a>
 								</div>
 							</footer>
 					</div>
@@ -94,7 +88,7 @@
                         <section>
                             <h3>Contact</h3>
                             <p><a>mgtezak@gmail.com</a></p>
-							<p><span class="language-toggle"><a href="../../de/projekte/aoc-solver.html">Deutsche Version</a></span></p>
+							<p><span class="language-toggle"><a href="../../de/projekte/aoc-analytics.html">Deutsche Version</a></span></p>
 
                         </section>
                     </section>
