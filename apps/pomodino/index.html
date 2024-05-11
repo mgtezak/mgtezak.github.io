@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PomoDino</title>
+    <link
+      id="favicon"
+      rel="icon"
+      href="static/images/dino-work.svg"
+      type="image/svg+xml"
+    />
+    <link rel="stylesheet" href="static/css/main.css" />
+    <link rel="stylesheet" href="static/css/variables.css" />
+    <link rel="stylesheet" href="static/css/header.css" />
+    <link rel="stylesheet" href="static/css/timer.css" />
+    <link rel="stylesheet" href="static/css/stats.css" />
+    <link rel="stylesheet" href="static/css/settings.css" />
+    <audio id="audioPlayer"></audio>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header><h1>
+      PomoDino
+      <img class="dino" src="static/images/dino.svg" />
+    </h1>
+    <button class="open-settings-button">
+      <img src="static/images/settings.svg" alt="" />
+    </button>
+    </header>
+    <dialog id="settings-modal">
+      <div class="settings">
+        <button class="close-modal-icon remove-padding">
+          <svg width="30" height="30" viewbox="0 0 40 40">
+            <path
+              d="M 10,10 L 30,30 M 30,10 L 10,30"
+              stroke="black"
+              stroke-width="4"
+            />
+          </svg>
+        </button>
+        <h2>Settings</h2>
+        <div id="interval-lengths">
+          <h4 class="settings-category-title">Interval Lengths (minutes)</h4>
+          <label for="work">
+            <span>Work time</span>
+            <input id="work" type="number" step="5" min="0" max="120" />
+          </label>
+          <label for="shot-break">
+            <span>Short Break</span>
+            <input id="short-break" type="number" step="5" min="0" max="120" />
+          </label>
+          <label for="long-break">
+            <span>Long Break</span>
+            <input id="long-break" type="number" step="5" min="0" max="120" />
+          </label>
+        </div>
+        <hr />
+        <div id="workflow">
+          <h4 class="settings-category-title">Workflow</h4>
+          <label for="long-break-interval">
+            <span>Long Break Frequency</span>
+            <input
+              id="long-break-interval"
+              type="number"
+              step="1"
+              min="1"
+              max="20"
+            />
+          </label>
+          <label for="auto-start">
+            <span>Auto-Transitions</span>
+            <input id="auto-start" type="checkbox" />
+          </label>
+        </div>
+        <hr />
+        <div id="sounds">
+          <h4 class="settings-category-title">Sounds</h4>
+          <ul id="audio-list">
+            <li><button id="triangle-dinner-bell">Triangle Bell</button></li>
+            <li><button id="bike-horn">Bike Horn</button></li>
+            <li><button id="cartoon-telephone">Cartoon Telephone</button></li>
+            <li><button id="ship-bell">Ship Bell</button></li>
+            <li><button id="japanese-temple-bell-small">Temple Bell 1</button></li>
+            <li><button id="zen-buddhist-temple-bell">Temple Bell 2</button></li>
+            <li><button id="temple-bell">Temple Bell 3</button></li>
+            <li><button id="temple-bell-bigger">Temple Bell 4</button></li>
+            <li><button id="temple-bell-huge">Temple Bell 5</button></li>
+          </ul>
+        </div>
+        <button class="default-settings-button">Reset All</button>
+      </div>
+    </dialog>
+    
+    <main>
+      <div class="timer-container">
+        <div class="interval-type-buttons">
+          <button id="work-button" class="active">Work</button>
+          <button id="short-break-button">Short Break</button>
+          <button id="long-break-button">Long Break</button>
+        </div>
+        <div class="progress-container">
+          <svg class="progress-circle">
+            <circle
+              class="progress-track"
+              cx="200"
+              cy="200"
+              r="180"
+              stroke-width="15"
+              fill="transparent"
+            />
+            <circle
+              class="progress-bar"
+              cx="200"
+              cy="200"
+              r="180"
+              stroke-width="15"
+              fill="transparent"
+              stroke-linecap="round"
+            />
+          </svg>
+          <div class="clock-container">
+            <span id="clock"></span>
+            <div class="timer-buttons">
+              <button id="reset-button">
+                <img src="static/images/reset.svg" alt="" />
+              </button>
+              <button id="start-pause-button">
+                <svg
+                  class="start-icon"
+                  width="48"
+                  height="67"
+                  viewBox="0 0 48 67"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g clip-path="url(#clip0_2_36)">
+                    <path
+                      d="M45.3162 28.4404C33.5639 19.4607 21.8111 10.482 10.0592 1.50361C5.87451 -1.69455 -0.156769 1.29324 -0.156769 6.5631V60.4367C-0.156769 65.7066 5.87451 68.6945 10.0592 65.4964C21.8111 56.5181 33.5639 47.5393 45.3162 38.5596C48.6511 36.0124 48.6511 30.9876 45.3162 28.4404Z"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_2_36">
+                      <rect width="48" height="67" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+              
+                <svg
+                  class="pause-icon"
+                  width="48"
+                  height="67"
+                  viewBox="0 0 48 67"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M11.5241 61.8748V4.12509C11.5241 1.84671 9.10362 0 6.11731 0C3.13099 0 0.710327 1.84671 0.710327 4.12509V61.8748C0.710327 64.1525 3.13084 66 6.11731 66C9.10362 66 11.5241 64.1526 11.5241 61.8748ZM48.2895 61.8748V4.12509C48.2895 1.84671 45.8689 0 42.8826 0C39.8975 0 37.4769 1.84671 37.4769 4.12509V61.8748C37.4769 64.1525 39.8974 66 42.8826 66C45.8689 66 48.2895 64.1526 48.2895 61.8748Z"
+                  />
+                </svg>
+              </button>
+              
+              <button id="skip-button">
+                <img src="static/images/skip.svg" alt="" />
+              </button>
+              <!-- <button id="analyticsButton" onclick="showAnalytics()">Analytics</button>   -->
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      
+      <div class="stats-container">
+        <h3>Your Stats (Today)</h3>
+        <div class="stats">
+          <div>Work Sessions<span id="work-sessions"></span></div>
+          <div>Work Time<span id="work-time"></span></div>
+          <div>Total Time<span id="total-time"></span></div>
+        </div>
+      </div>
+      
+    </main>
+    <script src="static/js/utils.js"></script>
+    <script src="static/js/settings.js"></script>
+    <script src="static/js/timer.js"></script>
+    <script src="static/js/workflow.js"></script>
+    <script src="static/js/set-current-interval-styles.js"></script>
+    <script src="static/js/init.js"></script>
+  </body>
+</html>

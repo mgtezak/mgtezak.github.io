@@ -1,0 +1,35 @@
+:root {
+  --radius: 180px; /* any change here needs to be transfered to app.py */
+  --circle-padding: 20px;
+
+  --diameter: calc(var(--radius) * 2);
+  --circumference: calc(var(--diameter) * 3.14159265358979);
+  --circle-container-size: calc(var(--diameter) + var(--circle-padding) * 2);
+
+  --button-hover-box-shadow: 1px 1px 20px 3px #efefef35;
+
+  --button-hover-drop-shadow: 0 0 1rem #efefef35;
+
+  --color-work-1: #2a091e;
+  --color-work-2: #420f30;
+  --color-work-3: #c22d8f;
+  --color-work-4: #cf3097;
+
+  --color-short-break-1: #11250e;
+  --color-short-break-2: #224d1c;
+  --color-short-break-3: #5acc4b;
+  --color-short-break-4: #60d950;
+
+  --color-long-break-1: #0f2324;
+  --color-long-break-2: #1e4345;
+  --color-long-break-3: #54bfc4;
+  --color-long-break-4: #5acbd1;
+
+  --distance: 24px;
+}
+
+@media only screen and (max-width: 700px) {
+  :root {
+    --distance: 16px;
+  }
+}

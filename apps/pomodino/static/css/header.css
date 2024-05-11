@@ -1,0 +1,31 @@
+header {
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  position: sticky;
+  z-index: 2;
+  top: 0;
+  background-color: var(--color-work-1);
+  transition: background-color 300ms ease-in-out;
+}
+
+header h1 {
+  font-size: 40px;
+  margin: 0;
+  font-family: "Amatic SC", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.dino {
+  max-height: 40px;
+  vertical-align: middle;
+}
+
+.open-settings-button img {
+  max-height: 40px;
+}
+
+.open-settings-button:hover {
+  filter: drop-shadow(var(--button-hover-drop-shadow));
+}

@@ -1,0 +1,136 @@
+/* Interval-Type Buttons  */
+
+.timer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.interval-type-buttons {
+  margin-top: var(--distance);
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 0 var(--distance);
+}
+
+.interval-type-buttons button {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  min-width: 12rem;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.132);
+}
+
+.interval-type-buttons button:hover {
+  box-shadow: var(--button-hover-box-shadow);
+}
+
+.interval-type-buttons #work-button {
+  background-color: var(--color-work-4);
+}
+.interval-type-buttons #short-break-button {
+  background-color: var(--color-short-break-4);
+}
+.interval-type-buttons #long-break-button {
+  background-color: var(--color-long-break-4);
+}
+
+/* Timer Circle */
+
+.progress-container {
+  position: relative;
+  width: var(--circle-container-size);
+  height: var(--circle-container-size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: var(--distance);
+}
+
+.progress-circle {
+  width: var(--circle-container-size);
+  height: var(--circle-container-size);
+  transform: rotate(-90deg);
+}
+
+/* The circular track underneath the progress bar */
+
+.progress-bar {
+  fill: var(--color-work-2);
+  stroke: var(--color-work-3);
+  stroke-dasharray: var(--circumference);
+  stroke-dashoffset: -1;
+  transition: stroke-dashoffset 0.5s, fill 300ms ease-in-out,
+    stroke 300ms ease-in-out;
+}
+
+.clock-container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Timer Content */
+
+#clock {
+  margin: 0;
+  padding: 0;
+  font-size: 100px;
+  font-weight: 700;
+  line-height: 100px;
+}
+
+/* Timer Buttons  */
+
+.timer-buttons {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding-left: 4px;
+}
+
+.timer-buttons button:hover {
+  filter: drop-shadow(var(--button-hover-drop-shadow));
+}
+
+.timer-buttons #reset-button {
+  margin-right: -3px;
+  transform: scale(85%);
+}
+
+.timer-buttons #start-pause-button .start-icon {
+  display: block;
+  fill: var(--color-work-4);
+  transition: fill 300ms ease-in-out;
+}
+.timer-buttons #start-pause-button .pause-icon {
+  display: none;
+  fill: var(--color-work-4);
+  transition: fill 300ms ease-in-out;
+}
+
+.timer-buttons #skip-button {
+  transform: scale(85%);
+}
+
+@media only screen and (max-width: 700px) {
+  .interval-type-buttons {
+    flex-wrap: wrap;
+  }
+  .interval-type-buttons #work-button {
+    flex: 1;
+  }
+  .interval-type-buttons #short-break-button {
+    flex: 1;
+  }
+  .interval-type-buttons #long-break-button {
+    width: 100%;
+  }
+  .timer-container {
+    flex-direction: column-reverse;
+  }
+}
