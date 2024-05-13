@@ -1,0 +1,138 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Michael Tezak Portfolio</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<link rel="icon" type="image/svg+xml" href="../../assets/icons/favicon.svg" />
+		<noscript><link rel="stylesheet" href="../../assets/css/noscript.css" /></noscript>
+	</head>
+
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header"></header>
+
+				<!-- Nav -->
+                <nav id="nav">
+					<ul class="links">
+						<li class="active"><a href="../projects.html">Projects</a></li>
+						<li><a href="../technical-skills.html">Technical-Skills</a></li>
+						<li><a href="../other-interests.html">Other-Interests</a></li>
+				</ul>
+                    <ul class="icons">
+                        <li><a href="https://github.com/mgtezak" target="_blank" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						<li><a href="https://www.linkedin.com/in/mgtezak/" target="_blank" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+                    </ul>
+                </nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<!-- <span class="date">1. November 2023</span> -->
+									<h1>Advent of Code Data Harvester</h1>
+									<p>
+                                        Automatic collection and storage of 
+										<a href="https://adventofcode.com">Advent of Code</a>'s 
+										public data.
+                                        <br/>
+										Cron Jobs, GitHub Actions, Requests, BeautifulSoup, SQLite
+									</p>
+								</header>
+								<div class="image main"><img src="../../images/aoc-harvester.jpg" alt="image: aoc-harvester" /></div>
+
+								<!-- <span class="image right"><img src="../../images/aoc_public_completions2.png" alt="" /></span> -->
+
+								<p>
+									The AoC Data Harvester consists of two automated scripts, 
+									which run at different times and collect different types of data.
+									Both are configured to comply with 
+									<a href="https://old.reddit.com/r/adventofcode/wiki/faqs/automation/" target="_blank">AoC's web scraping guidelines</a>,
+									meaning that consecutive requests are separated out by 15 minutes 
+									and each request includes a header linking back to my
+									<a href="https://github.com/mgtezak/AoC_Data_Harvester" target="_blank">public repo</a> for maximum transparency.
+									The automation is made possible through <i>GitHub Actions</i> which is surprisingly easy to set up.
+								</p>
+								<p>
+									<h4>1. Title & Leaderboard Scraper</h4> 
+									This script runs daily at 7am (<i>UTC</i>) from the 1st-25th of December, 
+									which is 2 hours after each new puzzle is released. 
+									In Cron syntax, this translates to 
+									<code>0 7 1-25 12 *</code>. 
+									By that point the leaderboard will almost certainly have filled up.
+									Once it has filled up for a given puzzle, it won't ever change again, meaning that these data, 
+									along with the puzzle title, need to be scraped only once.	
+								</p>
+								<p>
+									<h4>2. Completion Stats Scraper</h4>
+									Since the number of people who complete a given puzzle increases over time, 
+									scraping these completion rates is not a one-time job, but a continuous one.
+									This type of data lends itself well for some time-series analysis later on.
+									I decided that the script will run at noon 
+									(<i>UTC</i>) throughout the entire year.
+									In Cron syntax, this translates to <code>0 12 * * *</code>.
+									Luckily, the completion numbers are grouped annually, 
+									so I only need 1 request per year since 2015, which is when AoC started to collect the data. 
+									So currently that's 9 requests per daily run with 15 minutes between each new request, adding up to 2 hours in total.
+								</p>
+								<p>
+									All the collected data is stored in an SQLite database file and inserted into predefined tables:
+									<code>puzzles</code> for the titles (1 row per puzzle),
+									<code>leaderboard</code> for the user names and completion times of the top 100 fastest competitors on each puzzle part (200 rows per puzzle)
+									and finally <code>stats</code> for the completion rates (1 row per puzzle per time slice).				
+									If you're wondering what I do with this data, check out my <a href="aoc-analytics.html">AoC Data Analytics</a> 
+									project. However, since I've only just started to update the completion rates daily, there is more to come.
+								</p>
+								<ul class="actions special">
+									<li><a href="https://github.com/mgtezak/AoC_Data_Harvester"  target="_blank" class="button primary">See GitHub Repo</a></li>
+								</ul>
+                            </section>
+							<footer>
+								<div class="pagination">
+									<!-- <a href="pomodino.html" class="previous">Prev</a> -->
+									<a href="pomodino.html" class="next">Next</a>
+								</div>
+							</footer>
+					</div>
+
+				<!-- Footer -->
+                <footer id="footer">
+                    <section class="split contact">
+                        <section>
+                            <h3>Contact</h3>
+                            <p><a>mgtezak@gmail.com</a></p>
+							<p><span class="language-toggle"><a href="../../de/projekte/aoc-harvester.html">Deutsche Version</a></span></p>
+
+                        </section>
+                    </section>
+                </footer>
+
+				<!-- Copyright -->
+					<div id="copyright"></div>
+
+			</div>
+
+		<!-- Scripts -->
+		<script src="../../assets/js/jquery.min.js"></script>
+		<script src="../../assets/js/jquery.scrollex.min.js"></script>
+		<script src="../../assets/js/jquery.scrolly.min.js"></script>
+		<script src="../../assets/js/browser.min.js"></script>
+		<script src="../../assets/js/breakpoints.min.js"></script>
+		<script src="../../assets/js/util.js"></script>
+		<script src="../../assets/js/main.js"></script>
+
+
+	</body>
+</html>

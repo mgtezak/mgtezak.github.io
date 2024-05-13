@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Michael Tezak Portfolio</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<link rel="icon" type="image/svg+xml" href="../../assets/icons/favicon.svg" />
+		<noscript><link rel="stylesheet" href="../../assets/css/noscript.css" /></noscript>
+	</head>
+
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header"></header>
+
+				<!-- Nav -->
+                <nav id="nav">
+					<ul class="links">
+						<li class="active"><a href="../projekte.html">Projekte</a></li>
+						<li><a href="../qualifikationen.html">Qualifikationen</a></li>
+						<li><a href="../weitere-interessen.html">Weitere-Interessen</a></li>
+				</ul>
+                    <ul class="icons">
+                        <li><a href="https://github.com/mgtezak" target="_blank" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						<li><a href="https://www.linkedin.com/in/mgtezak/" target="_blank" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+					</ul>
+                </nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<!-- <span class="date">1. November 2023</span> -->
+									<h1>Advent of Code Data Harvester</h1>
+                                    <p>
+                                        Automatische Erfassung und Speicherung von 
+                                        <a href="https://adventofcode.com">Advent of Code</a>'s öffentlichen Daten.
+                                        <br/>
+                                        Cron Jobs, GitHub Actions, Requests, BeautifulSoup, SQLite
+                                    </p>
+								</header>
+								<div class="image main"><img src="../../images/aoc-harvester.jpg" alt="image: aoc-harvester" /></div>
+                              
+                                <p>
+                                    Der AoC Data Harvester besteht aus zwei automatisierten Skripten, 
+                                    die zu verschiedenen Zeiten laufen und verschiedene Arten von Daten sammeln. 
+                                    Beide sind so konfiguriert, dass sie den 
+                                    <a href="https://old.reddit.com/r/adventofcode/wiki/faqs/automation/" target="_blank">Web-Scraping-Richtlinien von AoC</a>
+                                    entsprechen.
+                                    Konkret bedeutet dies, dass aufeinanderfolgende Requests um 15 Minuten versetzt sind 
+                                    und jeder Request einen Header enthält, der zu meinem 
+                                    <a href="https://github.com/mgtezak/AoC_Data_Harvester" target="_blank">öffentlichen Repository</a>
+                                    zurückverlinkt, um maximale Transparenz zu gewährleisten. 
+                                    Die Automatisierung wird durch <i>GitHub Actions</i> ermöglicht, was überraschend einfach einzurichten ist.
+                                </p>
+                                <p>
+                                    <h4>1. Titel und Bestenlisten Scraper</h4>
+                                    Dieses Skript läuft täglich um 7 Uhr (UTC) vom 1. bis zum 25. Dezember, 
+                                    also immer 2 Stunden nachdem ein neues Puzzle veröffentlicht wird. 
+                                    In Cron-Syntax wird dies zu <code>0 7 1-25 12 *</code>. 
+                                    Zu diesem Zeitpunkt wird die Bestenliste mit sehr guter wahrscheinlichkeit gefüllt sein. 
+                                    Sobald sie für ein bestimmtes Rätsel gefüllt ist, ändert sie sich danach nicht mehr, 
+                                    was bedeutet, dass diese Daten zusammen mit dem Rätseltitel nur einmal erfasst werden müssen.
+                                </p>
+                                <p>
+                                    <h4>2. Abschlussraten Scraper</h4>
+                                    Da die Anzahl der Personen, die ein bestimmtes Puzzle lösen, 
+                                    mit der Zeit zunimmt, ist das Erfassen dieser Abschlussraten keine einmalige Aufgabe, 
+                                    sondern eine fortlaufende. 
+                                    Daten dieser Art eignen sich gut für Zeitreihenanalysen. 
+                                    Ich habe beschlossen, dass das Skript das ganze Jahr über um 12 Uhr Mittags (UTC) laufen wird. 
+                                    In Cron-Syntax entspricht dies <code>0 12 * * *</code>. 
+                                    Glücklicherweise werden die Abschlusszahlen jährlich gruppiert, 
+                                    sodass ich nur einen Requests pro Jahr benötige, in dem AoC bisher stattfand.
+                                    Derzeit sind das (2024 - 2015 = ) 9 Anfragen pro täglichem Durchlauf.
+                                    Mit 15 Minuten zwischen den einzelnen Request, ergibt dies 2 Stunden, die das Script braucht um einmal zu laufen.
+                                </p>
+                                <p>
+                                    Alle gesammelten Daten werden in einer SQLite-Datenbank gespeichert und in vordefinierte Tabellen eingefügt: 
+                                    <code>puzzles</code> für die Titel (1 Zeile pro Rätsel), 
+                                    <code>leaderboard</code> für die Benutzernamen und Abschlusszeiten der 100 schnellsten Teilnehmer 
+                                    bei jedem Rätselteil (200 Zeilen pro Rätsel) und schließlich <code>stats</code>
+                                    für die Abschlussraten (1 Zeile pro Rätsel pro Zeitscheibe). 
+                                    Falls du dich fragst, was ich mit diesen Daten anfange, schau dir mein 
+                                    <a href="aoc-analytics.html">AoC Datenanlyse</a> Projekt an.
+                                    Da ich jedoch erst kürzlich begonnen habe, die Abschlussraten täglich zu aktualisieren, wird noch einiges folgen.
+                                    
+                                    
+                                    
+                                </p>
+
+								<ul class="actions special">
+									<li><a href="https://github.com/mgtezak/AoC_Data_Harvester"  target="_blank" class="button primary">Zum GitHub Repo</a></li>
+								</ul>
+                            </section>
+
+                        <footer>
+                            <div class="pagination">
+                                <!-- <a href="pomodino.html" class="previous">Prev</a> -->
+                                <a href="pomodino.html" class="next">Next</a>
+                            </div>
+                        </footer>
+
+					</div>
+
+				<!-- Footer -->
+                <footer id="footer">
+                    <section class="split contact">
+                        <section>
+                            <h3>Kontakt</h3>
+                            <p><a>mgtezak@gmail.com</a></p>
+							<p><span class="language-toggle"><a href="../../en/projects/aoc-harvester.html">English version</a></span></p>
+                        </section>
+                    </section>
+                </footer>
+
+				<!-- Copyright -->
+					<div id="copyright"></div>
+
+			</div>
+
+		<!-- Scripts -->
+		<script src="../../assets/js/jquery.min.js"></script>
+		<script src="../../assets/js/jquery.scrollex.min.js"></script>
+		<script src="../../assets/js/jquery.scrolly.min.js"></script>
+		<script src="../../assets/js/browser.min.js"></script>
+		<script src="../../assets/js/breakpoints.min.js"></script>
+		<script src="../../assets/js/util.js"></script>
+		<script src="../../assets/js/main.js"></script>
+
+
+	</body>
+</html>
