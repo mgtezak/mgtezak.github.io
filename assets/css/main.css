@@ -177,7 +177,7 @@ input, select, textarea {
 
 	p {
 		text-align: justify;
-		margin: 0 0 2rem 0;
+		margin: 0 0 1rem 0;
 	}
 
 	h1, h2, h3, h4, h5, h6 {
@@ -2848,9 +2848,12 @@ input, select, textarea {
 
 	ul {
 		list-style: disc;
-		margin: 0 0 2rem 0;
+		margin: 0 0 1.5rem 0;
 		padding-left: 1rem;
 	}
+		ul ul {
+			margin: 0 0 0 0;
+		}
 
 		ul li {
 			padding-left: 0.5rem;
@@ -3011,6 +3014,7 @@ input, select, textarea {
 	table {
 		margin: 0 0 2rem 0;
 		width: 100%;
+		font-size: 0.85rem; /* Set the font size for the table */
 	}
 
 		table tbody tr {
@@ -3020,7 +3024,7 @@ input, select, textarea {
 		}
 
 		table td {
-			padding: 0.75rem 0.75rem;
+			padding: 0.25rem 0.75rem;
 		}
 
 		table th {

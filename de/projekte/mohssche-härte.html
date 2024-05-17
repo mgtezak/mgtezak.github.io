@@ -51,20 +51,203 @@
 									TensorFlow, LightGBM, XGBoost, Scikit-Learn, Matplotlib, Seaborn		
 								</p>
 							</header>
-							<div class="image main"><img src="../../images/mohs-hardness.png" alt="image: mohs-hardness" /></div>
+							<div class="image main"><img src="../../images/mohs-hardness/mohs-scale-of-hardness2.png" alt="image: mohs-hardness" /></div>
 							<p>
 								Dieses Projekt entstand im Rahmen einer <i><a href="https://www.kaggle.com/competitions/playground-series-s3e25/"  target="_blank">Kaggle Competition</a></i>.
 								Ziel war es, mittels maschinellem Lernen die Härte von Mineralien auf Grundlage von 11 verschiedenen molekularen Eigenschaften vorherzusagen.
 								Die Bewertungsmetrik, welche es zu minimieren galt, war die mittlere absolute Abweichung.
-								<br/>
 								Nach einer explorativen Datenanalyse mit einigen Visualisierungen verbringe ich den größten Teil dieses Projekts mit dem Vergleich verschiedener ML-Modelle.
 								Ich vergleiche sowohl flache als auch tiefe Lernalgorithmen und erweitere sie jeweils durch Ensemble-Methoden wie <i>Voting</i> und <i>Stacking</i>.
-								Ich komme zu dem Schluss, dass die besten Ergebnisse durch ein <i>stacked deep neural net</i> erzielt werden können, 
+								Ich komme zu dem Schluss, dass die besten Ergebnisse durch ein <b>Stacked Deep Neural Net</b> erzielt werden können, 
 								d. h. ein tiefes neuronales Netz, dass sowohl auf dem originalen Datensatz, als auch auf den Vorhersagen eines weiteren Models trainiert wurde.
+								Ich habe zwei <i>Kaggle Notebooks</i> zu diesem Projekt bearbeitet: 
+								<a href="https://www.kaggle.com/code/michaeltezak/eda-stacking-model/" target="_blank"><b>#1</b></a> &
+								<a href="https://www.kaggle.com/code/michaeltezak/comparison-shallow-deep-voting-stacking" target="_blank"><b>#2</b></a>.
+								Ich habe zu diesem Datensatz außerdem <a href="https://blogs.egu.eu/geolog/2020/09/25/freidrich-mohs-and-the-mineral-scale-of-hardness/" target="_blank">diesen interessanten Blog Post</a>
+								gefunden. Der Rest dieser Seite ist auf Englisch, da ich bisher keine Zeit gefunden habe, ihn zu überzetzen. 
+								<ul>
+									<li><a href="#moh-eda">Exploratory Data Analysis</a></li>
+									<li><a href="#moh-modeling">Modeling</a></li>
+									<li><a href="#moh-evaluation">Evaluation</a></li>
+								</ul>
 							</p>
-							<ul class="actions special">
-								<li><a href="https://mgtezak-data-science.streamlit.app/Mohs_Hardness_Regression"  target="_blank" class="button primary">Zum Projekt</a></li>
+							<hr />
+							<h3 id="moh-eda">Exploratory Data Analysis</h3>
+							<p>
+								An explanation of each feature can be found in the paper 
+								<a href="https://pubs.acs.org/doi/pdf/10.1021/bk-2019-1326.ch002" target="_blank">Prediction of Mohs Hardness with Machine Learning Methods by Joy C. Garnett</a>:
+								<table>
+									<tr>
+										<th>Variable</th>
+										<th>Description</th>
+									</tr>
+									<tr>
+										<td>allelectrons_Total</td>
+										<td>Total number of electrons</td>
+									</tr>
+									<tr>
+										<td>density_Total</td>
+										<td>Total elemental density</td>
+									</tr>
+									<tr>
+										<td>allelectrons_Average</td>
+										<td>Atomic average number of electrons</td>
+									</tr>
+									<tr>
+										<td>val_e_Average</td>
+										<td>Atomic average number of valence electrons</td>
+									</tr>
+									<tr>
+										<td>atomicweight_Average</td>
+										<td>Atomic average weight</td>
+									</tr>
+									<tr>
+										<td>ionenergy_Average</td>
+										<td>Atomic average ionization energy</td>
+									</tr>
+									<tr>
+										<td>el_neg_chi_Average</td>
+										<td>Atomic average Pauling electronegativity of the most common oxidation state</td>
+									</tr>
+									<tr>
+										<td>R_vdw_element_Average</td>
+										<td>Atomic average van der Waals atomic radius</td>
+									</tr>
+									<tr>
+										<td>R_cov_element_Average</td>
+										<td>Atomic average covalent atomic radius</td>
+									</tr>
+									<tr>
+										<td>zaratio_Average</td>
+										<td>Atomic average number to mass ratio</td>
+									</tr>
+									<tr>
+										<td>density_Average</td>
+										<td>Atomic average elemental density</td>
+									</tr>
+									<tr>
+										<td>Hardness</td>
+										<td>Mohs hardness (target)</td>
+									</tr>
+								</table>
+								All of these variables (including the target) have enough unique values to be considered continuous:
+							</p>
+							<span class="image main"><img src="../../images/mohs-hardness/nunique.png" alt="number of unique values" /></span>
+							<p>
+								We can check for data drift by checking, whether or not the feature distributions of the test data differ from those of the training data:
+							</p>
+							<span class="image main"><img src="../../images/mohs-hardness/data_drift.png" alt="data drift" /></span>
+							<ul>
+								<li>No data drift – train and test set distributions are very much aligned</li>
+								<li>Some features are heavily right skewed. <i>allelectrons_Total</i> & <i>density_Total</i> in particular seem to follow a power-law distribution</li>
+								<li>Others are moderately left skewed</li>
+								<li>Most variables including the target are multimodal (their distributions have multiple peaks)</li>
 							</ul>
+							<span class="image main"><img src="../../images/mohs-hardness/heatmap.png" alt="correlation heatmap" /></span>
+							<ul>
+								<li>A lot of intercorrelation amongst the features –> problematic for inference</li>
+								<li><i>allelectrons_Average</i> & <i>atomicweight_Average</i> correlate nearly perfectly –> we can probably drop one</li>
+								<li>Only a few moderate correlations with the target:
+									<ul><li><i>allelectrons_Average</i>/<i>atomicweight_Average</i> -0.4</li><li><i>density_Average</i> -0.36</li></ul>
+								</li>
+								<li>The others have weak negative correlations with the target, interestingly no positive correlations at all</li>
+								<li><i>el_neg_chi_Average</i> has close to no correlation at all with the target</li>
+							</ul>
+							<hr />
+							<h3 id="moh-modeling">Modeling</h3>
+							<p>
+								My main approach here was to explore and compare different machine learning models and 
+								to stack them on top of each other to create better models. 
+								I used some <b>shallow</b> and some <b>deep learning</b>, some <b>voting</b> and some <b>stacking</b>. 
+								I summarized my results in a plot at the end (<i>skip to <a href="#moh-evaluation">Evaluation</a></i>). 
+							</p>
+							<h5>Shallow Learning Algorithms</h5>
+							<p>
+								First I created some functions that help evaluate each model uniformly. Then I tested 5 different regression algorithms:
+								<ul>
+									<li>LR: Linear Regression</li>
+									<li>SVM: Support Vector Machine</li>
+									<li>XGB: Extreme Gradient Boosting</li>
+									<li>LGBM: Light Gradient Boosting Machine</li>
+									<li>RF: Random Forest</li>
+								</ul>
+							</p>
+							<i>Observations:</i>
+							<p> 
+								<ul>
+									<li>Huge difference between linear regression and the others</li>
+									<li>Some difference between the others as well</li>
+									<li>The winner is Support Vector Machine Regression</li>
+									<li>Very impressive how fast LGBM and XGB are, considering that their errors are not much worse than that of SVR</li>
+								</ul>
+							</p>
+							<h5>Shallow Learning + Voting & Stacking</h5>
+							<p>
+								Next up, I used the previous learning algorithms as base estimators to build bigger models, 
+								hoping to that these ensemble models would show an improvement over their individual parts. 
+								I did not include Linear Regression in the list of base estimators, due to its performance. 
+								I tried 3 approaches:
+								<ol>
+									<li>Voting Regressor</li>
+									<li>Stacking Regressor with Linear Regression as final estimator</li>
+									<li>Stacking Regressor with Support Vector Machine Regression as final estimator</li>
+								</ol>
+							</p>
+							<i>Observations:</i>
+							<p>
+								<ul>
+									<li>Voting Regressor is more or less the average of its base estimators – definitely no improvement!</li>
+									<li>Stacking with LR is not better than its best base estimator SVM but more time consuming</li>
+									<li>Stacking with SVM the best model so far – apparently the choice of final estimator matters a lot! – unfortunately it is also the most time consuming to train</li>
+								</ul>
+							</p>
+							<h5>Deep Learning</h5>
+							<p>
+								I used a Dense Neural Net architecture with 2 deep layers with 16 and 32 neurons respectively and a final output layer with a signle neuron. 
+								<ul>
+									<li>Most time consuming model yet</li>
+									<li>Error is pretty good, but still slightly worse than of Stacking with SVM</li>
+								</ul>
+							</p>
+							<h5>Deep Learning + Stacking</h5>
+							<p>
+								Finally I wanted to see how much I can improve the Deep Neural Network by feeding it predictions of other models. 
+								All of these predictions were generated through KFold splitting to avoid data leakage. 
+								I saw some people neglect to do this and then get inflated scores as a result that don't reflect their 
+								final test scores, so I do recommend it. I tested 3 different approaches:
+								<ol>
+									<li>Add only predictions from the current best estimator: Stacking with Support Vector Machine</li>
+									<li>Add predictions from only the base estimators</li>
+									<li>Add predictions from both</li>
+								</ol>
+							</p>
+							<i>Observations:</i>
+							<p>
+								<ul>
+									<li>Even though the last one has 5 more features than the plain DNN and as a result more than 10% more trainable params, the training time is almost the same</li>
+									<li>All three perform better than any of the previous models</li>
+									<li>    No significant differences between them (within error) – to be expected since the engineered features are highly correlated, leading to diminishing returns after having added one of them</li>
+								</ul>
+							</p>
+							<hr />
+							<h3 id="moh-evaluation">Evaluation</h3>
+							<span class="image main"><img src="../../images/mohs-hardness/model-comparison.png" alt="model comparison" /></span>
+							<p>
+								<i>Notes:</i>
+								<ul>
+									<li>The runtimes are all inflated by the KFold cross validation. Each model ran 5 times on 80% of the data (320%).</li>
+									<li>On the other hand, the runtimes of the Deep Stacked algorithms only include the fitting of the neural net itself, but not the creation of the extra features through other algorithms. Technically, these would need to be included, in order to gauge the runtime of the entire ML pipeline.</li>
+								</ul>
+							</p>
+							<p>
+								<i>Observations:</i>
+								<ul>
+									<li>Deep learning yields better results than shallow learning</li>
+									<li>Voting is bad</li>
+									<li>Stacking is great – but the final estimator matters</li>
+									<li>Deep Stacking is best – but also the most expensive</li>
+								</ul>
+							</p>
 						</section>
 						
                         <footer>
